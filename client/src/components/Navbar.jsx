@@ -82,7 +82,7 @@ const Navbar = () => {
             />
             
             <div className={`sidebar-mobile ${isOpen ? 'open' : ''}`}>
-                <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/[0.02]">
+                <div className="p-4 border-b border-white/5 flex items-center justify-between bg-[#1e293b]">
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                             <span className="text-white font-bold text-sm">F</span>
