@@ -1,16 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --primary: #8B5CF6;
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --primary: #8b5cf6;
+  --primary-dark: #7c3aed;
+  --secondary: #6366f1;
+  --dark: #0f172a;
+  --light: #f8fafc;
+  --glass: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.08);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
   --primary-glow: rgba(139, 92, 246, 0.4);
-  --secondary: #10B981;
   --accent: #F59E0B;
   --background: #0A0F1E;
   --surface: #161B2E;
   --text: #F8FAFC;
-  --text-muted: #94A3B8;
-  --border: rgba(255, 255, 255, 0.08);
-  --glass: rgba(15, 23, 42, 0.8);
   --gradient-bg: radial-gradient(circle at 50% -20%, #1E1B4B 0%, #0A0F1E 100%);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -19,9 +24,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  text-decoration: none;
-  outline: none !important;
+  font-family: var(--font-family);
 }
 
 body {
@@ -953,4 +956,11 @@ input:focus {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bg-none-imp {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
 }

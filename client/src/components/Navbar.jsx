@@ -121,7 +121,7 @@ const Navbar = () => {
                     </Link>
                     <button
                         onClick={handleLogout}
-                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-red-500/10 text-red-400 transition-colors text-left"
+                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-red-500/10 text-red-400 transition-colors text-left bg-transparent border-none shadow-none"
                     >
                         <LogOut size={20} />
                         <span className="font-medium text-sm uppercase tracking-wide">Logout</span>
