@@ -31,7 +31,7 @@ const Navbar = () => {
     if (!user) return null;
 
     return (
-        <nav className="fixed top-0 w-full z-50 bg-[#0F172A]/90 backdrop-blur-lg shadow-2xl">
+        <nav className="fixed top-0 w-full z-50 bg-[#0F172A] border-b border-white/5 shadow-lg backdrop-blur-md">
             <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
                 <Link to="/" className="flex items-center gap-2 no-underline group shrink-0">
                     <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
@@ -81,7 +81,7 @@ const Navbar = () => {
             />
             
             <div className={`sidebar-mobile ${isOpen ? 'open' : ''}`}>
-                <div className="p-4 border-b border-white/5 flex items-center justify-between">
+                <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/[0.02]">
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                             <span className="text-white font-bold text-sm">F</span>
