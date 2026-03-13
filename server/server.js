@@ -42,5 +42,6 @@ mongoose.connect(process.env.MONGO_URI)
     });
   })
   .catch((err) => {
-    console.log('❌ MongoDB Connection Error:', err.message);
+    console.log('❌ MongoDB Connection Error Details:', err);
+    console.log('❌ Error Message:', err.message);
   });
