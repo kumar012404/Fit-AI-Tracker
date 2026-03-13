@@ -86,11 +86,12 @@ const Navbar = () => {
                         <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                             <span className="text-white font-bold text-sm">F</span>
                         </div>
-                        <span className="font-bold text-white italic">Menu</span>
+                        <span className="font-bold text-white">FitAI<span className="text-primary">Tracker</span></span>
                     </div>
                     <button 
                         onClick={() => setIsOpen(false)} 
-                        className="p-2 rounded-full hover:bg-white/10 text-text-muted hover:text-white transition-colors border-none bg-transparent"
+                        className="p-2 rounded-full hover:bg-white/10 text-text-muted hover:text-white transition-colors border-none bg-none shadow-none"
+                        style={{ background: 'transparent', border: 'none' }}
                     >
                         <X size={24} />
                     </button>
