@@ -921,7 +921,7 @@ input:focus {
   right: 0;
   height: 100vh;
   width: 280px;
-  background: #0F172A;
+  background: #0f172a;
   z-index: 100;
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -949,6 +949,13 @@ input:focus {
 .sidebar-overlay.open {
   opacity: 1;
   pointer-events: auto;
+}
+
+.header-gradient-glass {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.85) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .header-gradient-glass {
