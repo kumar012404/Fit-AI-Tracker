@@ -1,0 +1,110 @@
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { LayoutDashboard, Dumbbell, Utensils, MessageSquare, Camera, User, LogOut, Menu, X, ShieldAlert } from 'lucide-react';
+import { useState } from 'react';
+
+const Navbar = () => {
+    const { user, logout } = useAuth();
+    const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
+
+    let navLinks = [];
+
+    if (user?.role === 'admin') {
+        navLinks = [
+            { name: 'Admin Dashboard', path: '/admin', icon: <ShieldAlert size={20} /> },
+        ];
+    } else if (user) {
+        navLinks = [
+            { name: 'Dashboard', path: '/', icon: <LayoutDashboard size={20} /> },
+            { name: 'Workouts', path: '/workouts', icon: <Dumbbell size={20} /> },
+            { name: 'Diet', path: '/diet', icon: <Utensils size={20} /> },
+            { name: 'FitAI Chat', path: '/chat', icon: <MessageSquare size={20} /> },
+        ];
+    }
+
+    if (!user) return null;
+
+    return (
+        <nav className="fixed top-0 w-full z-50 bg-[#0F172A]/90 backdrop-blur-lg shadow-2xl">
+            <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+                <Link to="/" className="flex items-center gap-2 no-underline group">
+                    <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
+                        <span className="text-white font-bold">F</span>
+                    </div>
+                    <span className="font-bold text-xl tracking-tight text-white">FitAI<span className="text-primary">Tracker</span></span>
+                </Link>
+
+                {/* Desktop Menu */}
+                <div className="hidden md:flex items-center gap-8 card-glass px-6 py-2 rounded-full border border-white/5">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.path}
+                            to={link.path}
+                            className="flex items-center gap-2 text-text-muted hover:text-white transition-all hover:scale-105 no-underline"
+                        >
+                            <span className="text-primary">{link.icon}</span>
+                            <span className="text-xs font-bold uppercase tracking-wider">{link.name}</span>
+                        </Link>
+                    ))}
+                </div>
+
+                <div className="hidden md:flex items-center gap-4">
+                    <Link to="/profile" className="flex items-center gap-2 hover:scale-110 transition-transform">
+                        <div className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-primary hover:bg-white/10 transition-colors shadow-lg">
+                            <User size={20} />
+                        </div>
+                    </Link>
+                    <button onClick={handleLogout} className="w-10 h-10 flex items-center justify-center text-text-muted hover:text-red-400 hover:bg-red-500/10 rounded-full transition-all">
+                        <LogOut size={20} />
+                    </button>
+                </div>
+
+                {/* Mobile Toggle */}
+                <button className="md:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
+                    {isOpen ? <X /> : <Menu />}
+                </button>
+            </div>
+
+            {/* Mobile Menu */}
+            {isOpen && (
+                <div className="md:hidden glass border-t border-white/5 p-4 flex flex-col gap-4 animate-fade-in">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.path}
+                            to={link.path}
+                            onClick={() => setIsOpen(false)}
+                            className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-text-muted hover:text-white"
+                        >
+                            <div className="text-primary">{link.icon}</div>
+                            <span className="font-medium">{link.name}</span>
+                        </Link>
+                    ))}
+                    <div className="h-px w-full bg-white/10" />
+                    <Link
+                        to="/profile"
+                        onClick={() => setIsOpen(false)}
+                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-text-muted hover:text-white"
+                    >
+                        <User size={20} className="text-primary" />
+                        <span className="font-medium">Profile</span>
+                    </Link>
+                    <button
+                        onClick={handleLogout}
+                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-red-500/10 text-red-400"
+                    >
+                        <LogOut size={20} />
+                        <span className="font-medium">Logout</span>
+                    </button>
+                </div>
+            )}
+        </nav>
+    );
+};
+
+export default Navbar;
