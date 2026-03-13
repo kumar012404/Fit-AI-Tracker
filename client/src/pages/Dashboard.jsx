@@ -53,6 +53,14 @@ const Dashboard = () => {
         </div>
     );
 
+    if (loading) {
+        return (
+            <div className="h-screen w-full flex items-center justify-center bg-background pt-24">
+                <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+            </div>
+        );
+    }
+
     return (
         <div className="pt-24 px-6 max-w-7xl mx-auto pb-20">
             <header className="mb-10 animate-fade-in">
@@ -124,23 +132,29 @@ const Dashboard = () => {
                             <button className="text-primary text-xs font-bold hover:underline">VIEW ALL</button>
                         </div>
                         <div className="space-y-4">
-                            {stats.recentWorkouts.map((w, i) => (
-                                <div key={i} className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-10 h-10 bg-secondary/20 text-secondary rounded-lg flex items-center justify-center">
-                                            <Dumbbell size={20} />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold">{w.name}</h4>
-                                            <p className="text-xs text-text-muted">{new Date(w.date).toLocaleDateString()}</p>
-                                        </div>
-                                    </div>
-                                    <div className="text-right">
-                                        <p className="font-bold">{w.exercises.length} Ex</p>
-                                        <p className="text-[10px] text-text-muted uppercase tracking-wider">Completed</p>
-                                    </div>
+                            {stats.recentWorkouts.length === 0 ? (
+                                <div className="text-center py-10 opacity-50">
+                                    <p className="text-sm">No workouts recently.</p>
                                 </div>
-                            ))}
+                            ) : (
+                                stats.recentWorkouts.map((w, i) => (
+                                    <div key={i} className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-10 h-10 bg-secondary/20 text-secondary rounded-lg flex items-center justify-center">
+                                                <Dumbbell size={20} />
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold">{w.name}</h4>
+                                                <p className="text-xs text-text-muted">{new Date(w.date).toLocaleDateString()}</p>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="font-bold">{w.exercises.length} Ex</p>
+                                            <p className="text-[10px] text-text-muted uppercase tracking-wider">Completed</p>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
                         </div>
                     </div>
                 </div>
