@@ -88,8 +88,11 @@ const Navbar = () => {
                         </div>
                         <span className="font-bold text-white italic">Menu</span>
                     </div>
-                    <button onClick={() => setIsOpen(false)} className="p-2 text-text-muted">
-                        <X size={20} />
+                    <button 
+                        onClick={() => setIsOpen(false)} 
+                        className="p-2 rounded-full hover:bg-white/10 text-text-muted hover:text-white transition-colors border-none bg-transparent"
+                    >
+                        <X size={24} />
                     </button>
                 </div>
                 
