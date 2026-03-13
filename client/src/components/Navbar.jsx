@@ -33,11 +33,11 @@ const Navbar = () => {
     return (
         <nav className="fixed top-0 w-full z-50 bg-[#0F172A]/90 backdrop-blur-lg shadow-2xl">
             <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-                <Link to="/" className="flex items-center gap-2 no-underline group">
+                <Link to="/" className="flex items-center gap-2 no-underline group shrink-0">
                     <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
                         <span className="text-white font-bold">F</span>
                     </div>
-                    <span className="font-bold text-xl tracking-tight text-white">FitAI<span className="text-primary">Tracker</span></span>
+                    <span className="font-bold text-lg md:text-xl tracking-tight text-white line-clamp-1">FitAI<span className="text-primary">Tracker</span></span>
                 </Link>
 
                 {/* Desktop Menu */}
@@ -73,30 +73,30 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden glass border-t border-white/5 p-4 flex flex-col gap-4 animate-fade-in">
+                <div className="md:hidden glass border-t border-white/5 p-4 flex flex-col gap-2 animate-fade-in absolute top-16 left-0 w-full shadow-2xl">
                     {navLinks.map((link) => (
                         <Link
                             key={link.path}
                             to={link.path}
                             onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-text-muted hover:text-white"
+                            className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 text-text-muted hover:text-white transition-colors"
                         >
                             <div className="text-primary">{link.icon}</div>
                             <span className="font-medium">{link.name}</span>
                         </Link>
                     ))}
-                    <div className="h-px w-full bg-white/10" />
+                    <div className="h-px w-full bg-white/5 my-2" />
                     <Link
                         to="/profile"
                         onClick={() => setIsOpen(false)}
-                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-text-muted hover:text-white"
+                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 text-text-muted hover:text-white transition-colors"
                     >
                         <User size={20} className="text-primary" />
                         <span className="font-medium">Profile</span>
                     </Link>
                     <button
                         onClick={handleLogout}
-                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-red-500/10 text-red-400"
+                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-red-500/10 text-red-400 transition-colors"
                     >
                         <LogOut size={20} />
                         <span className="font-medium">Logout</span>
