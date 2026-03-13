@@ -122,6 +122,7 @@ const Navbar = () => {
                     <button
                         onClick={handleLogout}
                         className="flex items-center gap-3 p-3 rounded-xl hover:bg-red-500/10 text-red-400 transition-colors text-left !bg-none !bg-transparent border-none shadow-none"
+                        style={{ background: 'transparent', backgroundColor: 'transparent', border: 'none', boxShadow: 'none' }}
                     >
                         <LogOut size={20} />
                         <span className="font-medium text-sm uppercase tracking-wide">Logout</span>
