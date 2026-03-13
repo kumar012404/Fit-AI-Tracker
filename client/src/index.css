@@ -28,7 +28,7 @@
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-family);
   background: var(--background);
   background: var(--gradient-bg);
   color: var(--text);
@@ -949,13 +949,6 @@ input:focus {
 .sidebar-overlay.open {
   opacity: 1;
   pointer-events: auto;
-}
-
-.header-gradient-glass {
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.85) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .header-gradient-glass {
