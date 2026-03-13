@@ -74,9 +74,26 @@ const Navbar = () => {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
-            {isOpen && (
-                <div className="md:hidden glass border-t border-white/5 p-4 flex flex-col gap-2 animate-fade-in absolute top-16 left-0 w-full shadow-2xl">
+            {/* Mobile Sidebar & Overlay */}
+            <div 
+                className={`sidebar-overlay ${isOpen ? 'open' : ''}`} 
+                onClick={() => setIsOpen(false)}
+            />
+            
+            <div className={`sidebar-mobile ${isOpen ? 'open' : ''}`}>
+                <div className="p-4 border-b border-white/5 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <span className="text-white font-bold text-sm">F</span>
+                        </div>
+                        <span className="font-bold text-white italic">Menu</span>
+                    </div>
+                    <button onClick={() => setIsOpen(false)} className="p-2 text-text-muted">
+                        <X size={20} />
+                    </button>
+                </div>
+                
+                <div className="flex flex-col gap-2 p-4">
                     {navLinks.map((link) => (
                         <Link
                             key={link.path}
@@ -85,7 +102,7 @@ const Navbar = () => {
                             className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 text-text-muted hover:text-white transition-colors"
                         >
                             <div className="text-primary">{link.icon}</div>
-                            <span className="font-medium">{link.name}</span>
+                            <span className="font-medium text-sm uppercase tracking-wide">{link.name}</span>
                         </Link>
                     ))}
                     <div className="h-px w-full bg-white/5 my-2" />
@@ -95,17 +112,17 @@ const Navbar = () => {
                         className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 text-text-muted hover:text-white transition-colors"
                     >
                         <User size={20} className="text-primary" />
-                        <span className="font-medium">Profile</span>
+                        <span className="font-medium text-sm uppercase tracking-wide">Profile</span>
                     </Link>
                     <button
                         onClick={handleLogout}
-                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-red-500/10 text-red-400 transition-colors"
+                        className="flex items-center gap-3 p-3 rounded-xl hover:bg-red-500/10 text-red-400 transition-colors text-left"
                     >
                         <LogOut size={20} />
-                        <span className="font-medium">Logout</span>
+                        <span className="font-medium text-sm uppercase tracking-wide">Logout</span>
                     </button>
                 </div>
-            )}
+            </div>
         </nav>
     );
 };
